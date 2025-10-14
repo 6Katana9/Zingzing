@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  apps:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: sh -c "
+                    chmod +x entrypoint.sh &&
+                    sh entrypoint.sh"
+    volumes:
+      - /home/test/cec/media:/usr/src/app/media
+      - /home/test/cec/static:/usr/src/app/static
+      - /home/test/cec/static-root:/usr/src/app/backend/static-root
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - db
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.db
+
+  # front:
+  #   build: ./frontend
+  #   environment:
+  #     - REACT_APP_CEC_API=172.16.10.31
+  #   ports:
+  #     - 3000:80
+
+
+volumes:
+  postgres_data:
+  redis-data:
+  
