@@ -5,3 +5,5 @@ pillow
 drf-yasg
 djangorestframework-simplejwt
 django-modeltranslation
+gunicorn
+django-ckeditor
