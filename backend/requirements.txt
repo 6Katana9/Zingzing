@@ -7,3 +7,4 @@ djangorestframework-simplejwt
 django-modeltranslation
 gunicorn
 django-ckeditor
+django-cors-headers
