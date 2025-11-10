@@ -10,8 +10,7 @@ COPY . .
 
 # Сборка проекта
 RUN npm run build
-# Экспорт статических файлов в папку "out"
-RUN npm run export
+
 
 # === nginx stage ===
 FROM nginx:alpine
