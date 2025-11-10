@@ -30,9 +30,7 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://94.198.217.222/api
     ports:
-      - "3000:3000"
-    depends_on:
-      - apps
+      - 3000:80
 
 
 volumes:
