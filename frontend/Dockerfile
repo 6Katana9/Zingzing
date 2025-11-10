@@ -16,6 +16,7 @@ RUN npm run build
 FROM nginx:alpine
 COPY default.conf /etc/nginx/conf.d/
 # Копируем статические файлы в nginx
+RUN chmod -R 755 /usr/share/nginx/html
 COPY --from=builder /app/out /usr/share/nginx/html
 
 EXPOSE 80
