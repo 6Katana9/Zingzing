@@ -28,8 +28,8 @@ services:
 
   front:
     build: ./frontend
-    # environment:
-      # - REACT_APP_CEC_API=172.16.10.31
+    environment:
+      - NEXT_PUBLIC_API_URL=http://94.198.217.222
     ports:
       - 3000:80
 
