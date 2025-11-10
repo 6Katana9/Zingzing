@@ -17,18 +17,18 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
 
-    path('aboutUs/', include('aboutUs.urls')),
-    path('factory/', include('factory.urls')),
-    path('home/', include('home.urls')),
-    path('news/', include('news.urls')),
-    path('products/', include('products.urls')),
-    path('quality/', include('quality.urls')),
-    path('reachUs/', include('reachUs.urls')),
+    path('api/aboutUs/', include('aboutUs.urls')),
+    path('api/factory/', include('factory.urls')),
+    path('api/home/', include('home.urls')),
+    path('api/news/', include('news.urls')),
+    path('api/products/', include('products.urls')),
+    path('api/quality/', include('quality.urls')),
+    path('api/reachUs/', include('reachUs.urls')),
 
     path(
-        "swagger/",
+        "api/swagger/",
         schema_view.with_ui("swagger", cache_timeout=0),
         name="schema-swagger-ui",
     ),
