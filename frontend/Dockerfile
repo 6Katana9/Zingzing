@@ -1,23 +1,14 @@
-# === builder stage ===
+# builder stage
 FROM node:20-alpine AS builder
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
-
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+RUN npm run build   # теперь автоматически создаст /app/out
 
-# Сборка проекта
-RUN npm run build
-
-
-# === nginx stage ===
+# nginx stage
 FROM nginx:alpine
 COPY default.conf /etc/nginx/conf.d/
-# Копируем статические файлы в nginx
-RUN chmod -R 755 /usr/share/nginx/html
 COPY --from=builder /app/out /usr/share/nginx/html
-
+RUN chmod -R 755 /usr/share/nginx/html  # чтобы nginx мог читать
 EXPOSE 80
-ENV PORT 80
