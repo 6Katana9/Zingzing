@@ -18,14 +18,14 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     path('aboutUs/', include('aboutUs.urls')),
-    path('factory', include('factory.urls')),
-    path('home', include('home.urls')),
-    path('news', include('news.urls')),
-    path('products', include('products.urls')),
-    path('quality', include('quality.urls')),
-    path('reachUs', include('reachUs.urls')),
+    path('factory/', include('factory.urls')),
+    path('home/', include('home.urls')),
+    path('news/', include('news.urls')),
+    path('products/', include('products.urls')),
+    path('quality/', include('quality.urls')),
+    path('reachUs/', include('reachUs.urls')),
 
     path(
         "swagger/",
