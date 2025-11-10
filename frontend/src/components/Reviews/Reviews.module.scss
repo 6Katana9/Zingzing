@@ -1,0 +1,118 @@
+.reviews {
+	margin-top: 70px;
+	text-align: center;
+	padding-bottom: 100px;
+
+	.title {
+		font-family: var(--second-family);
+		font-weight: 700;
+		font-size: clamp(18px, calc(18px + 62px * (100vw / 1315px)), 80px);
+		margin-bottom: 50px;
+		text-transform: capitalize;
+		color: var(--pink);
+	}
+
+	/* Десктопная сетка */
+	.cards {
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	/* ====== СТИЛЬ КАРТОЧКИ — НЕ МЕНЯЕМ ====== */
+	.card {
+		position: relative;
+		width: var(--card-w, 250px); /* РУЧНАЯ ширина */
+		height: 450px;
+		border-radius: 16px;
+		overflow: hidden;
+		border: 3px solid #ff2fa1;
+		background: #fff;
+
+		&:nth-child(odd) {
+			background-color: var(--purple);
+		}
+		&:nth-child(even) {
+			background-color: var(--yellow);
+		}
+	}
+
+	.preview,
+	.video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.playButton {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background: #fff;
+		border-radius: 50%;
+		width: 60px;
+		height: 60px;
+		border: none;
+		font-size: 28px;
+		cursor: pointer;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+	}
+
+	/* ====== Моб. свайпер ====== */
+	.swiperRoot {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.cards {
+			display: none;
+		}
+		.swiperRoot {
+			display: block;
+		}
+	}
+
+	/* Анти-скролл как в Factory */
+	.viewportClip {
+		overflow: hidden; /* обрезаем выезд по X */
+		width: 100%;
+	}
+
+	.swiper {
+		padding-bottom: 24px; /* место под пагинацию */
+	}
+
+	/* Сам слайд-элемент от Swiper — занимаем половину контейнера */
+	:global(.swiper-slide) {
+		display: flex !important;
+	}
+
+	/* Ячейка внутри слайда: центрируем карточку фиксированной ширины */
+	.slide {
+		/* класс на SwiperSlide */
+	}
+
+	.cell {
+		width: 100%;
+		display: flex;
+		justify-content: center; /* карточка по центру колонки */
+		align-items: center;
+		padding: 0; /* можно добавить отступы при желании */
+	}
+
+	/* Пагинация */
+	:global(.swiper-pagination-bullets) {
+		bottom: -15px !important;
+	}
+	:global(.swiper-pagination-bullet) {
+		opacity: 0.6;
+		background-color: var(--purple);
+	}
+	:global(.swiper-pagination-bullet-active) {
+		opacity: 1;
+		background-color: var(--pink);
+	}
+}

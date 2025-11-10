@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "ups_api_zingzing",
     "89.23.115.13",  # IP твоего сервера
+    "0.0.0.0"
     ]
 
 
@@ -50,10 +51,17 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'corsheaders',
+    'jsoneditor',
+
 
     #apps
-    'shop',
-    'reviews'
+    'aboutUs',
+    'factory',
+    'home',
+    'news',
+    'products',
+    'quality',
+    'reachUs'
 ]
 
 MIDDLEWARE = [

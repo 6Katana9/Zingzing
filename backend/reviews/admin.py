@@ -1,5 +1,0 @@
-from django.contrib import admin
-
-from .models import VideoReviews
-
-admin.site.register(VideoReviews)

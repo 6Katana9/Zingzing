@@ -26,12 +26,12 @@ services:
     env_file:
       - .env.db
 
-  # front:
-  #   build: ./frontend
-  #   environment:
-  #     - REACT_APP_CEC_API=172.16.10.31
-  #   ports:
-  #     - 3000:80
+  front:
+    build: ./frontend
+    # environment:
+      # - REACT_APP_CEC_API=172.16.10.31
+    ports:
+      - 3000:80
 
 
 volumes:
