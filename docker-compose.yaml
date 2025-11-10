@@ -8,10 +8,10 @@ services:
     command: sh -c "
                     chmod +x entrypoint.sh &&
                     sh entrypoint.sh"
-    volumes:
-      - /home/test/cec/media:/usr/src/app/media
-      - /home/test/cec/static:/usr/src/app/static
-      - /home/test/cec/static-root:/usr/src/app/backend/static-root
+    # volumes:
+    #   - /home/test/cec/media:/usr/src/app/media
+    #   - /home/test/cec/static:/usr/src/app/static
+    #   - /home/test/cec/static-root:/usr/src/app/backend/static-root
     ports:
       - 8000:8000
     env_file:
