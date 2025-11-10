@@ -31,7 +31,7 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://94.198.217.222
     ports:
-      - 3000:80
+      - 3000:3000
 
 
 volumes:
