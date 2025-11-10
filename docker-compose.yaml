@@ -8,10 +8,9 @@ services:
     command: sh -c "
                     chmod +x entrypoint.sh &&
                     sh entrypoint.sh"
-    # volumes:
-    #   - /home/test/cec/media:/usr/src/app/media
-    #   - /home/test/cec/static:/usr/src/app/static
-    #   - /home/test/cec/static-root:/usr/src/app/backend/static-root
+    volumes:
+      - media:/usr/src/app/media
+      - static:/usr/src/app/static
     ports:
       - 8000:8000
     env_file:
@@ -37,4 +36,6 @@ services:
 volumes:
   postgres_data:
   redis-data:
+  media:
+  static:
   
