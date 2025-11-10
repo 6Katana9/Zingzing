@@ -1,4 +1,4 @@
-FROM FROM node:20-alpine AS builder
+FROM node:20-alpine AS builder
 # ARG REACT_APP_CEC_API
 # ENV REACT_APP_CEC_API=${REACT_APP_CEC_API}
 WORKDIR /app
