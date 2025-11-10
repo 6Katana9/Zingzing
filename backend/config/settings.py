@@ -30,7 +30,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "ups_api_zingzing",
-    "89.23.115.13",  # IP твоего сервера
+    "89.23.115.13",
+    '94.198.217.222',  # IP твоего сервера
     "0.0.0.0"
     ]
 
@@ -161,7 +162,8 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://89.23.115.13",  # если фронт будет с того же сервера
+    "http://89.23.115.13",
+    'http://94.198.217.222'  # если фронт будет с того же сервера
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
