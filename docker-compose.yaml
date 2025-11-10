@@ -37,4 +37,5 @@ volumes:
   postgres_data:
   redis-data:
   media:
+  static:
   
