@@ -8,7 +8,7 @@ RUN npm run build   # теперь автоматически создаст /ap
 
 # nginx stage
 FROM nginx:alpine
-# COPY default.conf /etc/nginx/conf.d/
-# COPY --from=builder /app/out /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/
+COPY --from=builder /app/out /usr/share/nginx/html
 RUN chmod -R 755 /usr/share/nginx/html  # чтобы nginx мог читать
 EXPOSE 80
