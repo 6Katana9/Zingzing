@@ -39,7 +39,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://94.198.217.222
+      - NEXT_PUBLIC_API_URL=https://zingzing.ru
     depends_on:
       - apps
 
