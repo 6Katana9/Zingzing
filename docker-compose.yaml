@@ -9,8 +9,8 @@ services:
                     chmod +x entrypoint.sh &&
                     sh entrypoint.sh"
     volumes:
-      - media:/usr/src/app/media
-      - static:/usr/src/app/static
+      - ./media:/usr/src/app/media   # <--- локальная папка на хосте
+      - ./static:/usr/src/app/static
     ports:
       - 8000:8000
     env_file:
@@ -36,6 +36,4 @@ services:
 volumes:
   postgres_data:
   redis-data:
-  media:
-  static:
   
