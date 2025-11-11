@@ -171,5 +171,13 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.zingzing.ru',
     'https://zingzing.ru'  # если фронт будет с того же сервера
 ]
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:3000",
+    "https://127.0.0.1:3000",
+    "https://89.23.115.13",
+    'https://94.198.217.222',
+    'https://www.zingzing.ru',
+    'https://zingzing.ru' 
+    ]
 
 CORS_ALLOW_ALL_ORIGINS = True
