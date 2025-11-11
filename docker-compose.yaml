@@ -38,8 +38,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_API_URL=https://zingzing.ru
+    env_file:
+      - .env
     depends_on:
       - apps
 
