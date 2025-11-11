@@ -167,9 +167,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://89.23.115.13",
-    'http://94.198.217.222',
-    'http://www.zingzing.ru',
-    'http://zingzing.ru'  # если фронт будет с того же сервера
+    'https://94.198.217.222',
+    'https://www.zingzing.ru',
+    'https://zingzing.ru'  # если фронт будет с того же сервера
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
