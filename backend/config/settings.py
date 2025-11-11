@@ -33,8 +33,8 @@ ALLOWED_HOSTS = [
     "89.23.115.13",
     '94.198.217.222',  # IP твоего сервера
     "0.0.0.0",
-    'http://www.zingzing.ru',
-    'http://zingzing.ru'
+    'www.zingzing.ru',
+    'zingzing.ru'
     ]
 
 
