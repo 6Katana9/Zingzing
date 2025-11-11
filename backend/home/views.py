@@ -15,9 +15,9 @@ def products_home(request):
     fourth_section = FourthSectionGrowTogether.objects.first()
 
     return Response({
-        "hero": HeroSectionSerializer(hero).data if hero else {},
-        "firstSection": FirstSectionSerializer(first_section).data if first_section else {},
-        "secondSection": SecondSectionSerializer(second_section).data if second_section else {},
-        "thirdSection": ThirdSectionSerializer(third_section).data if third_section else {},
-        "fourthSectionGrowTogether": FourthSectionGrowTogetherSerializer(fourth_section).data if fourth_section else {}
+        "hero": HeroSectionSerializer(hero, context={"request": request}).data if hero else {},
+        "firstSection": FirstSectionSerializer(first_section, context={"request": request}).data if first_section else {},
+        "secondSection": SecondSectionSerializer(second_section, context={"request": request}).data if second_section else {},
+        "thirdSection": ThirdSectionSerializer(third_section, context={"request": request}).data if third_section else {},
+        "fourthSectionGrowTogether": FourthSectionGrowTogetherSerializer(fourth_section, context={"request": request}).data if fourth_section else {}
     })

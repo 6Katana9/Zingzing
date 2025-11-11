@@ -38,3 +38,13 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = ["id", "name", "slug", "elements"]
+
+
+from rest_framework import serializers
+
+class AbsoluteImageUrlField(serializers.ImageField):
+    def to_representation(self, value):
+        if not value:
+            return None
+        request = self.context.get("request")
+        return request.build_absolute_uri(value.url)
