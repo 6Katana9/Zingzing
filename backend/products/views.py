@@ -13,9 +13,14 @@ def products_page(request):
     third_section = ThirdSection.objects.first()
     fourth_section = FourthSectionGrowTogether.objects.first()
 
+    hero_data = HeroSectionSerializer(hero, context={"request": request}).data if hero else {}
+    second_data = SecondSectionSerializer(second_section, context={"request": request}).data if second_section else {}
+    third_data = ThirdSectionSerializer(third_section, context={"request": request}).data if third_section else {}
+    fourth_data = FourthSectionGrowTogetherSerializer(fourth_section, context={"request": request}).data if fourth_section else {}
+
     return Response({
-        "hero": HeroSectionSerializer(hero).data if hero else {},
-        "secondSectionSmallCard": SecondSectionSerializer(second_section).data if second_section else {},
-        "thirdSectionBigCards": ThirdSectionSerializer(third_section).data if third_section else {},
-        "fourthSectionGrowTogether": FourthSectionGrowTogetherSerializer(fourth_section).data if fourth_section else {}
+        "hero": hero_data,
+        "secondSectionSmallCard": second_data,
+        "thirdSectionBigCards": third_data,
+        "fourthSectionGrowTogether": fourth_data
     })

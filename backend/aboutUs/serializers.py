@@ -1,50 +1,61 @@
 from rest_framework import serializers
-from .models import Page, Element, Product, Files
+from .models import HeroSection, SecondSection, CountryItem, DropsItem, ThirdSection, ThirdBlock
 from home.serializers import AbsoluteImageUrlField
 
 
-# ✅ Product
-class ProductSerializer(serializers.ModelSerializer):
+# ✅ Hero Section
+class HeroSectionSerializer(serializers.ModelSerializer):
+    leftSideImage1 = AbsoluteImageUrlField()
+    leftSideImage2 = AbsoluteImageUrlField()
+    leftSideImage3 = AbsoluteImageUrlField()
+    rightSideImage = AbsoluteImageUrlField()
+
+    class Meta:
+        model = HeroSection
+        fields = "__all__"
+
+
+# ✅ CountryItem (для SecondSection.list)
+class CountryItemSerializer(serializers.ModelSerializer):
     image = AbsoluteImageUrlField()
 
     class Meta:
-        model = Product
-        fields = ["id", "title", "description", "price", "image"]
+        model = CountryItem
+        fields = ["id", "image", "innerTitle", "text", "order"]
 
 
-# ✅ Files
-class FilesSerializer(serializers.ModelSerializer):
-    file = AbsoluteImageUrlField()
-
-    class Meta:
-        model = Files
-        fields = ["id", "file"]
-
-
-# ✅ Element
-class ElementSerializer(serializers.ModelSerializer):
-    photo = AbsoluteImageUrlField()
-    products = ProductSerializer(many=True, read_only=True)
-    files = FilesSerializer(many=True, read_only=True)
+# ✅ DropsItem (для SecondSection.dropsList)
+class DropsItemSerializer(serializers.ModelSerializer):
+    image = AbsoluteImageUrlField()
 
     class Meta:
-        model = Element
-        fields = [
-            "id",
-            "type",
-            "photo",
-            "title",
-            "description",
-            "is_active",
-            "products",
-            "files",
-        ]
+        model = DropsItem
+        fields = ["id", "image", "dropsTitle", "dropsText", "order"]
 
 
-# ✅ Page
-class PageSerializer(serializers.ModelSerializer):
-    elements = ElementSerializer(many=True, read_only=True)
+# ✅ SecondSection
+class SecondSectionSerializer(serializers.ModelSerializer):
+    list = CountryItemSerializer(many=True, read_only=True)
+    dropsList = DropsItemSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Page
-        fields = ["id", "name", "slug", "elements"]
+        model = SecondSection
+        fields = ["mainTitle", "mainTitleSpan", "list", "dropsList"]
+
+
+# ✅ ThirdBlock (для ThirdSection.blocks)
+class ThirdBlockSerializer(serializers.ModelSerializer):
+    image = AbsoluteImageUrlField()
+
+    class Meta:
+        model = ThirdBlock
+        fields = ["id", "title", "titleSpan", "text", "image", "order"]
+
+
+# ✅ ThirdSection
+class ThirdSectionSerializer(serializers.ModelSerializer):
+    blocks = ThirdBlockSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ThirdSection
+        fields = ["blocks"]

@@ -5,14 +5,17 @@ from .serializers import HeroSectionSerializer, SectionSerializer, SwiperSlideSe
 
 @api_view(['GET'])
 def factory_page(request):
+    # Hero section
     hero = HeroSection.objects.first()
-    hero_data = HeroSectionSerializer(hero).data if hero else {}
+    hero_data = HeroSectionSerializer(hero, context={"request": request}).data if hero else {}
 
+    # Other sections (keyed by section.key)
     sections = Section.objects.all()
-    sections_data = {section.key: SectionSerializer(section).data for section in sections}
+    sections_data = {section.key: SectionSerializer(section, context={"request": request}).data for section in sections}
 
+    # Swiper slides
     slides = SwiperSlide.objects.all()
-    slides_data = SwiperSlideSerializer(slides, many=True).data
+    slides_data = SwiperSlideSerializer(slides, many=True, context={"request": request}).data
 
     return Response({
         "hero": hero_data,

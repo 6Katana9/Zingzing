@@ -8,7 +8,10 @@ def news_page(request):
     hero = NewsHeroSection.objects.first()
     second_section = NewsSecondSection.objects.first()
 
+    hero_data = NewsHeroSectionSerializer(hero, context={"request": request}).data if hero else {}
+    second_section_data = NewsSecondSectionSerializer(second_section, context={"request": request}).data if second_section else {}
+
     return Response({
-        "hero": NewsHeroSectionSerializer(hero).data if hero else {},
-        "secondSection": NewsSecondSectionSerializer(second_section).data if second_section else {}
+        "hero": hero_data,
+        "secondSection": second_section_data
     })

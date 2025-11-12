@@ -17,11 +17,14 @@ def quality_page(request):
     fourth_blocks = QualityFourthSectionBlock.objects.all()
 
     # Составляем JSON для fourthSection по ключам
-    fourth_section = {block.key: QualityFourthSectionBlockSerializer(block).data for block in fourth_blocks}
+    fourth_section = {
+        block.key: QualityFourthSectionBlockSerializer(block, context={"request": request}).data
+        for block in fourth_blocks
+    }
 
     return Response({
-        "hero": QualityHeroSectionSerializer(hero).data if hero else {},
-        "secondSection": QualitySecondSectionSerializer(second_section).data if second_section else {},
-        "thirdSection": QualityThirdSectionSerializer(third_section).data if third_section else {},
+        "hero": QualityHeroSectionSerializer(hero, context={"request": request}).data if hero else {},
+        "secondSection": QualitySecondSectionSerializer(second_section, context={"request": request}).data if second_section else {},
+        "thirdSection": QualityThirdSectionSerializer(third_section, context={"request": request}).data if third_section else {},
         "fourthSection": fourth_section
     })

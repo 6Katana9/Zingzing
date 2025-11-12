@@ -2,12 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import HeroSection, SecondSection, ThirdSection
 
+
 class AboutUsAPIView(APIView):
     def get(self, request):
-
         hero = HeroSection.objects.first()
         second = SecondSection.objects.first()
         third = ThirdSection.objects.first()
+
+        def absolute_url(file_field):
+            if file_field:
+                return request.build_absolute_uri(file_field.url)
+            return None
 
         return Response({
             "hero": {
@@ -16,10 +21,10 @@ class AboutUsAPIView(APIView):
                 "title2": hero.title2,
                 "mainTitleSpan2": hero.mainTitleSpan2,
                 "text": hero.text,
-                "leftSideImage1": hero.leftSideImage1.url,
-                "leftSideImage2": hero.leftSideImage2.url,
-                "leftSideImage3": hero.leftSideImage3.url,
-                "rightSideImage": hero.rightSideImage.url,
+                "leftSideImage1": absolute_url(hero.leftSideImage1),
+                "leftSideImage2": absolute_url(hero.leftSideImage2),
+                "leftSideImage3": absolute_url(hero.leftSideImage3),
+                "rightSideImage": absolute_url(hero.rightSideImage),
             },
             "secondSection": {
                 "mainTitle": second.mainTitle,
@@ -27,7 +32,7 @@ class AboutUsAPIView(APIView):
                 "list": [
                     {
                         "id": c.id,
-                        "image": c.image.url,
+                        "image": absolute_url(c.image),
                         "innerTitle": c.innerTitle,
                         "text": c.text
                     }
@@ -36,7 +41,7 @@ class AboutUsAPIView(APIView):
                 "dropsList": [
                     {
                         "id": d.id,
-                        "image": d.image.url,
+                        "image": absolute_url(d.image),
                         "dropsTitle": d.dropsTitle,
                         "dropsText": d.dropsText,
                     }
@@ -50,7 +55,7 @@ class AboutUsAPIView(APIView):
                         "title": b.title,
                         "titleSpan": b.titleSpan,
                         "text": b.text,
-                        "image": b.image.url
+                        "image": absolute_url(b.image)
                     }
                     for b in third.blocks.all()
                 ]
