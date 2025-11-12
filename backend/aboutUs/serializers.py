@@ -1,20 +1,29 @@
 from rest_framework import serializers
 from .models import Page, Element, Product, Files
+from home.serializers import AbsoluteImageUrlField
 
 
+# ✅ Product
 class ProductSerializer(serializers.ModelSerializer):
+    image = AbsoluteImageUrlField()
+
     class Meta:
         model = Product
         fields = ["id", "title", "description", "price", "image"]
 
 
+# ✅ Files
 class FilesSerializer(serializers.ModelSerializer):
+    file = AbsoluteImageUrlField()
+
     class Meta:
         model = Files
         fields = ["id", "file"]
 
 
+# ✅ Element
 class ElementSerializer(serializers.ModelSerializer):
+    photo = AbsoluteImageUrlField()
     products = ProductSerializer(many=True, read_only=True)
     files = FilesSerializer(many=True, read_only=True)
 
@@ -32,19 +41,10 @@ class ElementSerializer(serializers.ModelSerializer):
         ]
 
 
+# ✅ Page
 class PageSerializer(serializers.ModelSerializer):
     elements = ElementSerializer(many=True, read_only=True)
 
     class Meta:
         model = Page
         fields = ["id", "name", "slug", "elements"]
-
-
-from rest_framework import serializers
-
-class AbsoluteImageUrlField(serializers.ImageField):
-    def to_representation(self, value):
-        if not value:
-            return None
-        request = self.context.get("request")
-        return request.build_absolute_uri(value.url)
