@@ -1,63 +1,25 @@
-from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import HeroSection, SecondSection, ThirdSection
+from .serializers import HeroSectionSerializer, SecondSectionSerializer, ThirdSectionSerializer
 
+@api_view(['GET'])
+def about_us_page(request):
+    # Получаем hero
+    hero = HeroSection.objects.first()
+    hero_data = HeroSectionSerializer(hero, context={"request": request}).data if hero else {}
 
-class AboutUsAPIView(APIView):
-    def get(self, request):
-        hero = HeroSection.objects.first()
-        second = SecondSection.objects.first()
-        third = ThirdSection.objects.first()
+    # Получаем second section
+    second_section = SecondSection.objects.first()
+    second_data = SecondSectionSerializer(second_section, context={"request": request}).data if second_section else {}
 
-        def absolute_url(file_field):
-            if file_field:
-                return request.build_absolute_uri(file_field.url)
-            return None
+    # Получаем third section
+    third_section = ThirdSection.objects.first()
+    third_data = ThirdSectionSerializer(third_section, context={"request": request}).data if third_section else {}
 
-        return Response({
-            "hero": {
-                "title1": hero.title1,
-                "mainTitleSpan1": hero.mainTitleSpan1,
-                "title2": hero.title2,
-                "mainTitleSpan2": hero.mainTitleSpan2,
-                "text": hero.text,
-                "leftSideImage1": absolute_url(hero.leftSideImage1),
-                "leftSideImage2": absolute_url(hero.leftSideImage2),
-                "leftSideImage3": absolute_url(hero.leftSideImage3),
-                "rightSideImage": absolute_url(hero.rightSideImage),
-            },
-            "secondSection": {
-                "mainTitle": second.mainTitle,
-                "mainTitleSpan": second.mainTitleSpan,
-                "list": [
-                    {
-                        "id": c.id,
-                        "image": absolute_url(c.image),
-                        "innerTitle": c.innerTitle,
-                        "text": c.text
-                    }
-                    for c in second.list.all()
-                ],
-                "dropsList": [
-                    {
-                        "id": d.id,
-                        "image": absolute_url(d.image),
-                        "dropsTitle": d.dropsTitle,
-                        "dropsText": d.dropsText,
-                    }
-                    for d in second.dropsList.all()
-                ]
-            },
-            "thirdSection": {
-                "blocks": [
-                    {
-                        "id": b.id,
-                        "title": b.title,
-                        "titleSpan": b.titleSpan,
-                        "text": b.text,
-                        "image": absolute_url(b.image)
-                    }
-                    for b in third.blocks.all()
-                ]
-            }
-        })
+    # Формируем ответ
+    return Response({
+        "hero": hero_data,
+        "secondSection": second_data,
+        "thirdSection": third_data
+    })
