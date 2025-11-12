@@ -7,13 +7,12 @@ from .models import (
 @admin.register(HeroSection)
 class HeroSectionAdmin(admin.ModelAdmin):
     list_display = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2")
-    fields = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2",
-              "leftSideImage", "rightSideImage1", "rightSideImage2", "rightSideImage3")
+    exclude = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2")
 
 @admin.register(SecondSectionSmallCard)
 class SecondSectionSmallCardAdmin(admin.ModelAdmin):
     list_display = ("title", "titleSpan")
-    fields = ("title", "titleSpan", "image")
+    exclude = ("title", "titleSpan")
 
 @admin.register(SecondSection)
 class SecondSectionAdmin(admin.ModelAdmin):
@@ -22,7 +21,7 @@ class SecondSectionAdmin(admin.ModelAdmin):
 @admin.register(ThirdSectionBigCard)
 class ThirdSectionBigCardAdmin(admin.ModelAdmin):
     list_display = ("title", "titleSpan")
-    fields = ("title", "titleSpan", "text", "image")
+    exclude = ("title", "titleSpan", "text")
 
 @admin.register(ThirdSection)
 class ThirdSectionAdmin(admin.ModelAdmin):
@@ -31,4 +30,4 @@ class ThirdSectionAdmin(admin.ModelAdmin):
 @admin.register(FourthSectionGrowTogether)
 class FourthSectionGrowTogetherAdmin(admin.ModelAdmin):
     list_display = ("title", "titleSpan")
-    fields = ("image", "title", "titleSpan", "text")
+    exclude = ("title", "titleSpan", "text")

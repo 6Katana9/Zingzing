@@ -4,14 +4,13 @@ from .models import NewsHeroSection, NewsSecondSection, NewsSecondBlock
 @admin.register(NewsHeroSection)
 class NewsHeroSectionAdmin(admin.ModelAdmin):
     list_display = ("mainTitle", "titleSpan1", "titleSpan2")
-    fields = ("mainTitle", "titleSpan1", "titleSpan2", "text",
-              "leftSideImage1", "leftSideImage2", "leftSideImage3", "rightSideImage")
+    exclude = ("mainTitle", "titleSpan1", "titleSpan2", "text")
 
 @admin.register(NewsSecondBlock)
 class NewsSecondBlockAdmin(admin.ModelAdmin):
     list_display = ("title", "titleSpan")
-    fields = ("title", "titleSpan", "text", "image")
+    exclude = ("title", "titleSpan", "text")
 
 @admin.register(NewsSecondSection)
 class NewsSecondSectionAdmin(admin.ModelAdmin):
-    fields = ("firstBlock", "secondBlock", "thirdBlock")
+    exclude = ("firstBlock", "secondBlock", "thirdBlock")

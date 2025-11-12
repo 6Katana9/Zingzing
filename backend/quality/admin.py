@@ -8,18 +8,18 @@ from .models import (
 @admin.register(QualityHeroSection)
 class QualityHeroSectionAdmin(admin.ModelAdmin):
     list_display = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2")
-    fields = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2",
-              "text", "leftSideImage1", "leftSideImage2", "leftSideImage3", "rightSideImage")
+    exclude = ("title1", "mainTitleSpan1", "title2", "mainTitleSpan2",
+              "text")
 
 @admin.register(QualitySecondSection)
 class QualitySecondSectionAdmin(admin.ModelAdmin):
     list_display = ("title", "titleSpan")
-    fields = ("image", "title", "titleSpan", "text")
+    exclude = ("title", "titleSpan", "text")
 
 @admin.register(QualityThirdSectionDrop)
 class QualityThirdSectionDropAdmin(admin.ModelAdmin):
     list_display = ("dropsTitle",)
-    fields = ("image", "dropsTitle", "dropsText")
+    exclude = ("dropsTitle", "dropsText")
 
 @admin.register(QualityThirdSection)
 class QualityThirdSectionAdmin(admin.ModelAdmin):
@@ -28,4 +28,4 @@ class QualityThirdSectionAdmin(admin.ModelAdmin):
 @admin.register(QualityFourthSectionBlock)
 class QualityFourthSectionBlockAdmin(admin.ModelAdmin):
     list_display = ("key", "title")
-    fields = ("key", "image", "title", "titleSpan", "text")
+    exclude = ("key", "title", "titleSpan", "text")

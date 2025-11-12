@@ -8,22 +8,35 @@ from .models import (
 class CountryInline(admin.TabularInline):
     model = CountryItem
     extra = 0
-
+    exclude = (
+        'innerTitle',
+        'text',
+    )
 
 class DropsInline(admin.TabularInline):
     model = DropsItem
     extra = 0
-
+    exclude = (
+        'dropsTitle',
+        'dropsText',
+    )
 
 @admin.register(SecondSection)
 class SecondSectionAdmin(admin.ModelAdmin):
     inlines = [CountryInline, DropsInline]
-
+    exclude = (
+        'mainTitle',
+        'mainTitleSpan',
+    )
 
 class ThirdBlockInline(admin.TabularInline):
     model = ThirdBlock
     extra = 0
-
+    exclude = (
+        'title',
+        'titleSpan',
+        'text',
+    )
 
 @admin.register(ThirdSection)
 class ThirdSectionAdmin(admin.ModelAdmin):
@@ -33,3 +46,10 @@ class ThirdSectionAdmin(admin.ModelAdmin):
 @admin.register(HeroSection)
 class HeroSectionAdmin(admin.ModelAdmin):
     list_display = ("title1", "mainTitleSpan1")
+    exclude = (
+        'title1',
+        'mainTitleSpan1',
+        'title2',
+        'mainTitleSpan2',
+        'text',
+    )
