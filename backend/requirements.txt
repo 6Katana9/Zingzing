@@ -9,3 +9,5 @@ gunicorn
 django-ckeditor
 django-cors-headers
 django-jsoneditor
+django-modeltranslation
+
