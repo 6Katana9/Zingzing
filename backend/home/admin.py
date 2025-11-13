@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     HeroSection, FirstSection, SecondSection, SecondSectionCard,
-    ThirdSection, ThirdSectionCard, FourthSectionGrowTogether
+    ThirdSection, ThirdSectionCard, FourthSectionGrowTogether, Review
 )
 
 @admin.register(HeroSection)
@@ -38,3 +38,7 @@ class ThirdSectionAdmin(admin.ModelAdmin):
 class FourthSectionGrowTogetherAdmin(admin.ModelAdmin):
     list_display = ("title",)
     exclude = ("title", "titleSpan", "text")
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ("id", "preview", "video", "videoId")

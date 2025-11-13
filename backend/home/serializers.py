@@ -13,6 +13,14 @@ class AbsoluteImageUrlField(serializers.ImageField):
         request = self.context.get("request")
         return request.build_absolute_uri(value.url)
 
+from rest_framework import serializers
+from .models import Review
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ["id", "preview", "video", "videoId"]
+
 
 # ✅ Hero
 class HeroSectionSerializer(serializers.ModelSerializer):
