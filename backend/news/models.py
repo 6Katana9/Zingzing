@@ -11,12 +11,20 @@ class NewsHeroSection(models.Model):
     leftSideImage3 = models.ImageField(upload_to="news/")
     rightSideImage = models.ImageField(upload_to="news/")
 
+
+    def __str__(self):
+        return self.mainTitle
+
 # Second section blocks
 class NewsSecondBlock(models.Model):
     title = models.CharField(max_length=200, blank=True)
     titleSpan = models.CharField(max_length=200, blank=True)
     text = models.TextField()
     image = models.ImageField(upload_to="news/")
+
+
+    def __str__(self):
+        return self.title
 
 class NewsSecondSection(models.Model):
     firstBlock = models.OneToOneField(NewsSecondBlock, related_name="first_block", on_delete=models.CASCADE)

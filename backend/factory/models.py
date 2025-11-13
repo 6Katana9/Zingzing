@@ -10,12 +10,24 @@ class HeroSection(models.Model):
     image2 = models.ImageField(upload_to="factory/")
     image3 = models.ImageField(upload_to="factory/")
 
+
+    def __str__(self):
+        return self.title1
+
 class Section(models.Model):
     key = models.CharField(max_length=50, unique=True)  # "secondSection", "thirdSection", "fourthSection"
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to="factory/")
 
+
+    def __str__(self):
+        return self.title
+
 class SwiperSlide(models.Model):
     image = models.ImageField(upload_to="factory/")
     alt = models.CharField(max_length=200)
+
+
+    def __str__(self):
+        return self.alt

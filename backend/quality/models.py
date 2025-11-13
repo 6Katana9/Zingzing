@@ -12,6 +12,9 @@ class QualityHeroSection(models.Model):
     leftSideImage3 = models.ImageField(upload_to="quality/")
     rightSideImage = models.ImageField(upload_to="quality/")
 
+    def __str__(self):
+        return self.title1
+
 # Second section
 class QualitySecondSection(models.Model):
     image = models.ImageField(upload_to="quality/")
@@ -19,11 +22,19 @@ class QualitySecondSection(models.Model):
     titleSpan = models.CharField(max_length=200)
     text = models.TextField()
 
+
+    def __str__(self):
+        return self.title
+
 # Third section drops
 class QualityThirdSectionDrop(models.Model):
     image = models.ImageField(upload_to="quality/")
     dropsTitle = models.CharField(max_length=200)
     dropsText = models.TextField()
+
+
+    def __str__(self):
+        return self.dropsTitle
 
 class QualityThirdSection(models.Model):
     dropsList = models.ManyToManyField(QualityThirdSectionDrop, related_name="third_sections")
@@ -35,3 +46,7 @@ class QualityFourthSectionBlock(models.Model):
     title = models.CharField(max_length=200)
     titleSpan = models.CharField(max_length=200, blank=True)
     text = models.TextField()
+
+
+    def __str__(self):
+        return self.title

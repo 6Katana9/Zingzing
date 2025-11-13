@@ -11,11 +11,19 @@ class HeroSection(models.Model):
     rightSideImage2 = models.ImageField(upload_to="products/")
     rightSideImage3 = models.ImageField(upload_to="products/")
 
+
+    def __str__(self):
+        return self.title1
+
 # Second section small cards
 class SecondSectionSmallCard(models.Model):
     title = models.CharField(max_length=200)
     titleSpan = models.CharField(max_length=200)
     image = models.ImageField(upload_to="products/")
+
+
+    def __str__(self):
+        return self.title
 
 class SecondSection(models.Model):
     cards = models.ManyToManyField(SecondSectionSmallCard, related_name="second_sections")
@@ -27,6 +35,10 @@ class ThirdSectionBigCard(models.Model):
     text = models.TextField()
     image = models.ImageField(upload_to="products/")
 
+
+    def __str__(self):
+        return self.title
+
 class ThirdSection(models.Model):
     bigCard = models.ManyToManyField(ThirdSectionBigCard, related_name="third_sections")
 
@@ -36,3 +48,8 @@ class FourthSectionGrowTogether(models.Model):
     title = models.CharField(max_length=200)
     titleSpan = models.CharField(max_length=200)
     text = models.TextField()
+
+
+
+    def __str__(self):
+        return self.title

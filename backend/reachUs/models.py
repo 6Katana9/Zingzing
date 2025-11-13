@@ -9,8 +9,17 @@ class ReachUsHeroSection(models.Model):
     leftSideImage3 = models.ImageField(upload_to="reachus/")
     rightSideImage = models.ImageField(upload_to="reachus/")
 
+
+    def __str__(self):
+        return self.mainTitle
+
 # Second section
 class ReachUsSecondSection(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     image = models.ImageField(upload_to="reachus/")
+
+
+
+    def __str__(self):
+        return self.title

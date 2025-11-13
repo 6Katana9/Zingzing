@@ -28,4 +28,4 @@ class QualityThirdSectionAdmin(admin.ModelAdmin):
 @admin.register(QualityFourthSectionBlock)
 class QualityFourthSectionBlockAdmin(admin.ModelAdmin):
     list_display = ("key", "title")
-    exclude = ("key", "title", "titleSpan", "text")
+    exclude = ("title", "titleSpan", "text")
