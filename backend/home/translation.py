@@ -10,6 +10,8 @@ from .models import (
 @register(HeroSection)
 class HeroSectionTranslationOptions(TranslationOptions):
     fields = (
+        'title1',
+        'title2',
         'mainTitle',
         'mainTitleSpan1',
         'mainTitleSpan2',

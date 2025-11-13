@@ -7,7 +7,7 @@ from .models import (
 @admin.register(HeroSection)
 class HeroSectionAdmin(admin.ModelAdmin):
     list_display = ("mainTitle", "mainTitleSpan1", "mainTitleSpan2")
-    exclude = ("mainTitle", "mainTitleSpan1", "mainTitleSpan2", "firstText", "secondText")
+    exclude = ("title1", "title2", "mainTitle", "mainTitleSpan1", "mainTitleSpan2", "firstText", "secondText")
     
 
 @admin.register(FirstSection)

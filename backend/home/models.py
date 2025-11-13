@@ -2,6 +2,8 @@ from django.db import models
 
 # Hero section
 class HeroSection(models.Model):
+    title1 = models.CharField(max_length=200)
+    title2 = models.CharField(max_length=200)
     mainTitle = models.CharField(max_length=200)
     mainTitleSpan1 = models.CharField(max_length=200)
     mainTitleSpan2 = models.CharField(max_length=200)
