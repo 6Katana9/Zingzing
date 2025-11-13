@@ -13,4 +13,4 @@ class NewsSecondBlockAdmin(admin.ModelAdmin):
 
 @admin.register(NewsSecondSection)
 class NewsSecondSectionAdmin(admin.ModelAdmin):
-    exclude = ("firstBlock", "secondBlock", "thirdBlock")
+    fields = ("firstBlock", "secondBlock", "thirdBlock")
