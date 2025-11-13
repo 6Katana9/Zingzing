@@ -28,7 +28,7 @@ class SecondSectionAdmin(admin.ModelAdmin):
 @admin.register(ThirdSectionCard)
 class ThirdSectionCardAdmin(admin.ModelAdmin):
     list_display = ("text",)
-    exclude = ("text")
+    exclude = ("text",)
 
 @admin.register(ThirdSection)
 class ThirdSectionAdmin(admin.ModelAdmin):
