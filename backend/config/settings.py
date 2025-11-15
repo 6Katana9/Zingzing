@@ -28,14 +28,24 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
     "localhost",
-    "ups_api_zingzing",
-    "89.23.115.13",
-    '94.198.217.222',  # IP твоего сервера
+    "127.0.0.1",
     "0.0.0.0",
+    "ups_api_zingzing",
+
+    '94.198.217.222',  # IP твоего сервера
+    
     'www.zingzing.ru',
-    'zingzing.ru'
+    'zingzing.ru',
+
+    'www.zingzing.kz',
+    'zingzing.kz'
+
+    'www.zingzing.kg',
+    'zingzing.kg'
+
+    'www.zingzing.uz',
+    'zingzing.uz'
     ]
 
 
@@ -181,17 +191,37 @@ CORS_ALLOWED_ORIGINS = [
     "https://localhost:3000",
     "https://127.0.0.1:3000",
     "https://89.23.115.13",
+
     'https://94.198.217.222',
     'https://www.zingzing.ru',
-    'https://zingzing.ru'  # если фронт будет с того же сервера
+    'https://zingzing.ru',
+    
+    'https://www.zingzing.kz',
+    'https://zingzing.kz'
+
+    'https://www.zingzing.kg',
+    'https://zingzing.kg'
+
+    'https://www.zingzing.uz',
+    'https://zingzing.uz'  
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://localhost:3000",
     "https://127.0.0.1:3000",
     "https://89.23.115.13",
+    
     'https://94.198.217.222',
     'https://www.zingzing.ru',
-    'https://zingzing.ru' 
+    'https://zingzing.ru',
+
+    'https://www.zingzing.kz',
+    'https://zingzing.kz'
+
+    'https://www.zingzing.kg',
+    'https://zingzing.kg'
+
+    'https://www.zingzing.uz',
+    'https://zingzing.uz' 
     ]
 
 CORS_ALLOW_ALL_ORIGINS = True
