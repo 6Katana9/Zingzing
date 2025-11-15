@@ -5,9 +5,24 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'zingzing.ru',
-				port: '',
 				pathname: '/**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'zingzing.kz',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'zingzing.kg',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'zingzing.uz',
+				pathname: '/**',
+			},
+
 		],
 	},
 }
