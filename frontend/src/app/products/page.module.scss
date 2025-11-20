@@ -110,8 +110,8 @@
 
 .products {
 	margin: 50px 0;
+
 	.list {
-		gap: 50px;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 		gap: 30px;
@@ -120,7 +120,7 @@
 	.card {
 		margin: 0 auto;
 		width: 400px;
-		height: 235px;
+		height: 260px;
 
 		display: flex;
 		flex-direction: column;
@@ -138,6 +138,7 @@
 		margin-top: auto;
 	}
 
+	/* ВЕСЬ блок .pink пересобран */
 	.pink {
 		position: relative;
 		width: 400px;
@@ -158,6 +159,65 @@
 			background-color: var(--white);
 			transform: rotate(5deg);
 		}
+
+		/* пакет */
+		.imgWrapper {
+			position: absolute;
+			width: 123px;
+			height: 200px;
+			overflow: hidden;
+			right: 63px;
+			bottom: 0;
+			box-shadow: -15px 0 32px 0 rgba(0, 0, 0, 0.25);
+
+			> img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.littleImg {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			/* базовая позиция около пакета */
+			right: 80px;
+			bottom: 0;
+
+			/* старт: как будто глубоко в пакете */
+			transform: translateY(0%);
+			transition: transform 0.35s ease-out;
+			z-index: -1;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		/* если их две — немного раздвигаем */
+		.littleImg:nth-child(2) {
+			z-index: -1;
+			right: 62px;
+		}
+		.littleImg:nth-child(3) {
+			right: 115px;
+			z-index: -2;
+		}
+
+		/* hover по пинк-карточке — выезжают чуть выше */
+		&:hover {
+			.littleImg {
+				&:nth-child(2) {
+					transform: translateY(-170%) rotate(-34deg);
+				}
+				&:nth-child(3) {
+					transform: translateY(-170%) rotate(34deg);
+				}
+			}
+		}
 	}
 
 	.title {
@@ -165,24 +225,8 @@
 		font-weight: 900;
 		font-size: 29px;
 
-		& span {
+		span {
 			color: var(--yellow);
-		}
-	}
-
-	.imgWrapper {
-		position: absolute;
-		width: 123px;
-		height: 200px;
-		overflow: hidden;
-		right: 63px;
-		bottom: 0;
-		box-shadow: -15px 0 32px 0 rgba(0, 0, 0, 0.25);
-
-		& img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
 		}
 	}
 }
@@ -214,7 +258,7 @@
 
 		display: flex;
 		align-items: center;
-		padding-left: 100px;
+		padding-left: 130px;
 		margin-bottom: 100px;
 
 		.rightSide {
@@ -349,12 +393,12 @@
 	}
 
 	.imgWrapper {
-		width: 300px;
-		height: 480px;
+		width: 352px;
+		height: 570px;
 		overflow: hidden;
 		box-shadow: -31px 0 63px 0 rgba(0, 0, 0, 0.25);
 		position: absolute;
-		right: 133px;
+		right: 120px;
 		bottom: 0;
 
 		& img {
@@ -391,7 +435,7 @@
 	}
 
 	.content {
-		padding-left: 100px;
+		padding-left: 145px;
 		flex-shrink: 0;
 	}
 

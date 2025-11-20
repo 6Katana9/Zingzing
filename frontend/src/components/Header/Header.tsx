@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import styles from './Header.module.scss'
 
-// Типы для переводов
 type HeaderTranslation = {
 	topText: string
 	home: string
@@ -23,6 +22,8 @@ type HeaderTranslations = {
 	ENG: HeaderTranslation
 	RUS: HeaderTranslation
 	KAZ: HeaderTranslation
+	UZB: HeaderTranslation
+	TUR: HeaderTranslation
 }
 
 const Header = () => {
@@ -32,12 +33,13 @@ const Header = () => {
 	const pathName = usePathname()
 
 	const languages = [
-		{ code: 'ENG' as const, name: 'English' },
-		{ code: 'RUS' as const, name: 'Русский' },
-		{ code: 'KAZ' as const, name: 'Қазақша' },
+		{ code: 'ENG' as const, name: 'EN', short: 'EN' },
+		{ code: 'RUS' as const, name: 'RU', short: 'RU' },
+		{ code: 'KAZ' as const, name: 'KZ', short: 'KZ' },
+		{ code: 'UZB' as const, name: 'UZ', short: 'UZ' },
+		{ code: 'TUR' as const, name: 'TR', short: 'TR' },
 	]
 
-	// Переводы для текстов в Header
 	const headerTranslations: HeaderTranslations = {
 		ENG: {
 			topText:
@@ -51,28 +53,55 @@ const Header = () => {
 			reachUs: 'Reach Us',
 		},
 		RUS: {
-			topText: 'Острые. Хрустящие. Незабываемые. Это настоящий вкус ZingZing.',
+			topText: 'Острый. Хрустящий. Незабываемый. Это настоящий вкус ZingZing.',
 			home: 'Главная',
-			products: 'Продукты',
+			products: 'Продукция',
 			aboutUs: 'О нас',
 			quality: 'Качество',
 			news: 'Новости',
 			factory: 'Фабрика',
-			reachUs: 'Связаться',
+			reachUs: 'Контакты',
 		},
 		KAZ: {
-			topText: 'Ащы. Қытырлақ. Ұмытылмас. Бұл ZingZing-тің шынайы дәмі.',
-			home: 'Басты',
+			topText: 'Ащы. Қытырлақ. Ұмытылмас. Міне, ZingZing шынайы дәмі.',
+			home: 'Басты бет',
 			products: 'Өнімдер',
 			aboutUs: 'Біз туралы',
 			quality: 'Сапа',
 			news: 'Жаңалықтар',
-			factory: 'Фабрика',
-			reachUs: 'Байланысу',
+			factory: 'Өндіріс Орны',
+			reachUs: 'Байланыс',
+		},
+		UZB: {
+			topText:
+				"Achchiq. Qarsillagan. Unutilmas. Mana ZingZing'ning haqiqiy ta'mi.",
+			home: 'Bosh Sahifa',
+			products: 'Mahsulotlar',
+			aboutUs: 'Haqqimizda',
+			quality: 'Sifat',
+			news: 'Yangiliklar',
+			factory: 'Zavod',
+			reachUs: 'Aloqa',
+		},
+		TUR: {
+			topText: "Baharatlı. Çıtır. Unutulmaz. İşte ZingZing'in gerçek lezzeti.",
+			home: 'Ana Sayfa',
+			products: 'Ürünler',
+			aboutUs: 'Hakkımızda',
+			quality: 'Kalite',
+			news: 'Haberler',
+			factory: 'Fabrika',
+			reachUs: 'İletişim',
 		},
 	}
 
 	const t = headerTranslations[currentLang]
+
+	// Функция для получения сокращенного кода языка
+	const getShortLang = (langCode: string): string => {
+		const lang = languages.find(lang => lang.code === langCode)
+		return lang ? lang.short : langCode
+	}
 
 	// Массив навигационных ссылок для удобного рендеринга
 	const navItems: { href: string; key: keyof HeaderTranslation }[] = [
@@ -98,7 +127,9 @@ const Header = () => {
 		}
 	}, [burger])
 
-	const handleLangSelect = (langCode: 'ENG' | 'RUS' | 'KAZ') => {
+	const handleLangSelect = (
+		langCode: 'ENG' | 'RUS' | 'KAZ' | 'UZB' | 'TUR'
+	) => {
 		setCurrentLang(langCode)
 		setIsLangOpen(false)
 	}
@@ -133,7 +164,7 @@ const Header = () => {
 						))}
 						<li className={`${styles.item} ${styles.langItem}`}>
 							<button className={styles.lang} onClick={toggleLangMenu}>
-								{currentLang}
+								{getShortLang(currentLang)}
 							</button>
 							<div
 								className={`${styles.langMenu} ${
@@ -188,7 +219,7 @@ const Header = () => {
 					))}
 					<li className={`${styles.item} ${styles.langItem}`}>
 						<button className={styles.lang} onClick={toggleLangMenu}>
-							{currentLang}
+							{getShortLang(currentLang)}
 						</button>
 						<div
 							className={`${styles.langMenu} ${
