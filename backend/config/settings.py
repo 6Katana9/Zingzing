@@ -39,10 +39,10 @@ ALLOWED_HOSTS = [
     'zingzing.ru',
 
     'www.zingzing.kz',
-    'zingzing.kz'
+    'zingzing.kz',
 
     'www.zingzing.kg',
-    'zingzing.kg'
+    'zingzing.kg',
 
     'www.zingzing.uz',
     'zingzing.uz'
