@@ -9,4 +9,4 @@ class PartnershipRequest(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.email} — {self.phone_number}"
+        return f"{self.email} — {self.phone}"
