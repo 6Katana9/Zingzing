@@ -2,8 +2,8 @@ from django.db import models
 
 # Hero section
 class ReachUsHeroSection(models.Model):
-    mainTitle = models.CharField(max_length=200)
-    text = models.TextField()
+    mainTitle = models.CharField(max_length=200, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     leftSideImage1 = models.ImageField(upload_to="reachus/")
     leftSideImage2 = models.ImageField(upload_to="reachus/")
     leftSideImage3 = models.ImageField(upload_to="reachus/")
@@ -15,8 +15,8 @@ class ReachUsHeroSection(models.Model):
 
 # Second section
 class ReachUsSecondSection(models.Model):
-    title = models.CharField(max_length=200)
-    text = models.TextField()
+    title = models.CharField(max_length=200, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="reachus/")
 
 

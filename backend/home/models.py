@@ -4,12 +4,12 @@ from django.db import models
 class HeroSection(models.Model):
     title1 = models.CharField(max_length=200, blank=True, null=True)
     title2 = models.CharField(max_length=200, blank=True, null=True)
-    mainTitle = models.CharField(max_length=200)
-    mainTitleSpan1 = models.CharField(max_length=200)
-    mainTitleSpan2 = models.CharField(max_length=200)
-    firstText = models.TextField()
+    mainTitle = models.CharField(max_length=200, blank=True, null=True)
+    mainTitleSpan1 = models.CharField(max_length=200, blank=True, null=True)
+    mainTitleSpan2 = models.CharField(max_length=200, blank=True, null=True)
+    firstText = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="products/")
-    secondText = models.TextField()
+    secondText = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -18,9 +18,9 @@ class HeroSection(models.Model):
 # First section
 class FirstSection(models.Model):
     image = models.ImageField(upload_to="products/")
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True, null=True)
     titleSpan = models.CharField(max_length=200, blank=True)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -29,15 +29,15 @@ class FirstSection(models.Model):
 # Second section card
 class SecondSectionCard(models.Model):
     cardIcon = models.ImageField(upload_to="products/")
-    title = models.CharField(max_length=200)
-    text = models.TextField()
+    title = models.CharField(max_length=200, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
         return self.title
 
 class SecondSection(models.Model):
-    mainTitle = models.CharField(max_length=200)
+    mainTitle = models.CharField(max_length=200, blank=True, null=True)
     # Связь с карточками
     cards = models.ManyToManyField(SecondSectionCard, related_name="second_sections")
 
@@ -48,7 +48,7 @@ class SecondSection(models.Model):
 # Third section card
 class ThirdSectionCard(models.Model):
     image = models.ImageField(upload_to="products/")
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -62,9 +62,9 @@ class ThirdSection(models.Model):
 # Fourth section
 class FourthSectionGrowTogether(models.Model):
     image = models.ImageField(upload_to="products/")
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True, null=True)
     titleSpan = models.CharField(max_length=200, blank=True)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):

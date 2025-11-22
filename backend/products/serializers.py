@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
     HeroSection, SecondSection, SecondSectionSmallCard,
-    ThirdSection, ThirdSectionBigCard, FourthSectionGrowTogether
+    ThirdSection, ThirdSectionBigCard, FourthSectionGrowTogether, LittleImages
 )
 from home.serializers import AbsoluteImageUrlField
 
@@ -18,14 +18,27 @@ class HeroSectionSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# ✅ Second Section Small Card
-class SecondSectionSmallCardSerializer(serializers.ModelSerializer):
+class LittleImagesSerializer(serializers.ModelSerializer):
     image = AbsoluteImageUrlField()
 
     class Meta:
-        model = SecondSectionSmallCard
-        fields = "__all__"
+        model = LittleImages
+        fields = ['image']
 
+class SecondSectionSmallCardSerializer(serializers.ModelSerializer):
+    image = AbsoluteImageUrlField()
+    # Получаем все littleImages, связанные через ForeignKey
+    littleImages = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SecondSectionSmallCard
+        fields = ['id', 'title', 'titleSpan', 'image', 'littleImages']
+
+    def get_littleImages(self, obj):
+        # Если у карточки есть ForeignKey на LittleImages, возвращаем список URL
+        if obj.littleImages:
+            return [AbsoluteImageUrlField(context=self.context).to_representation(obj.littleImages.image)]
+        return []
 
 # ✅ Second Section
 class SecondSectionSerializer(serializers.ModelSerializer):

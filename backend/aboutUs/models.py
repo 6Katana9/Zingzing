@@ -1,11 +1,11 @@
 from django.db import models
 
 class HeroSection(models.Model):
-    title1 = models.CharField(max_length=255)
-    mainTitleSpan1 = models.CharField(max_length=255)
-    title2 = models.CharField(max_length=255)
-    mainTitleSpan2 = models.CharField(max_length=255)
-    text = models.TextField()
+    title1 = models.CharField(max_length=255, blank=True, null=True)
+    mainTitleSpan1 = models.CharField(max_length=255, blank=True, null=True)
+    title2 = models.CharField(max_length=255, blank=True, null=True)
+    mainTitleSpan2 = models.CharField(max_length=255, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
 
     leftSideImage1 = models.ImageField(upload_to="about/hero/")
     leftSideImage2 = models.ImageField(upload_to="about/hero/")
@@ -24,8 +24,8 @@ class CountryItem(models.Model):
     )
 
     image = models.ImageField(upload_to="about/countries/")
-    innerTitle = models.CharField(max_length=255)
-    text = models.TextField()
+    innerTitle = models.CharField(max_length=255, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -43,8 +43,8 @@ class DropsItem(models.Model):
     )
 
     image = models.ImageField(upload_to="about/drops/")
-    dropsTitle = models.CharField(max_length=255)
-    dropsText = models.TextField()
+    dropsTitle = models.CharField(max_length=255, blank=True, null=True)
+    dropsText = models.TextField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -55,8 +55,8 @@ class DropsItem(models.Model):
 
 
 class SecondSection(models.Model):
-    mainTitle = models.CharField(max_length=255)
-    mainTitleSpan = models.CharField(max_length=255)
+    mainTitle = models.CharField(max_length=255, blank=True, null=True)
+    mainTitleSpan = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return "Second Section"
@@ -73,9 +73,9 @@ class ThirdBlock(models.Model):
         on_delete=models.CASCADE
     )
 
-    title = models.CharField(max_length=255)
-    titleSpan = models.CharField(max_length=255)
-    text = models.TextField()
+    title = models.CharField(max_length=255, blank=True, null=True)
+    titleSpan = models.CharField(max_length=255, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="about/third/")
     order = models.PositiveIntegerField(default=0)
 

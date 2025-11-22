@@ -2,11 +2,11 @@ from django.db import models
 
 # Hero section
 class QualityHeroSection(models.Model):
-    title1 = models.CharField(max_length=200)
-    mainTitleSpan1 = models.CharField(max_length=200)
-    title2 = models.CharField(max_length=200)
-    mainTitleSpan2 = models.CharField(max_length=200)
-    text = models.TextField()
+    title1 = models.CharField(max_length=200, blank=True, null=True)
+    mainTitleSpan1 = models.CharField(max_length=200, blank=True, null=True)
+    title2 = models.CharField(max_length=200, blank=True, null=True)
+    mainTitleSpan2 = models.CharField(max_length=200, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
     leftSideImage1 = models.ImageField(upload_to="quality/")
     leftSideImage2 = models.ImageField(upload_to="quality/")
     leftSideImage3 = models.ImageField(upload_to="quality/")
@@ -18,9 +18,9 @@ class QualityHeroSection(models.Model):
 # Second section
 class QualitySecondSection(models.Model):
     image = models.ImageField(upload_to="quality/")
-    title = models.CharField(max_length=200)
-    titleSpan = models.CharField(max_length=200)
-    text = models.TextField()
+    title = models.CharField(max_length=200, blank=True, null=True)
+    titleSpan = models.CharField(max_length=200, blank=True, null=True)
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -29,8 +29,8 @@ class QualitySecondSection(models.Model):
 # Third section drops
 class QualityThirdSectionDrop(models.Model):
     image = models.ImageField(upload_to="quality/")
-    dropsTitle = models.CharField(max_length=200)
-    dropsText = models.TextField()
+    dropsTitle = models.CharField(max_length=200, blank=True, null=True)
+    dropsText = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
@@ -43,9 +43,9 @@ class QualityThirdSection(models.Model):
 class QualityFourthSectionBlock(models.Model):
     key = models.CharField(max_length=50, unique=True)  # ensure, accountability, stewardship, certifications
     image = models.ImageField(upload_to="quality/")
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True, null=True)
     titleSpan = models.CharField(max_length=200, blank=True)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
