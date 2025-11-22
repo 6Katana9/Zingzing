@@ -27,7 +27,6 @@ class LittleImagesSerializer(serializers.ModelSerializer):
 
 class SecondSectionSmallCardSerializer(serializers.ModelSerializer):
     image = AbsoluteImageUrlField()
-    # Получаем все littleImages, связанные через ForeignKey
     littleImages = serializers.SerializerMethodField()
 
     class Meta:
@@ -35,10 +34,16 @@ class SecondSectionSmallCardSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'titleSpan', 'image', 'littleImages']
 
     def get_littleImages(self, obj):
-        return [
-            AbsoluteImageUrlField(context=self.context).to_representation(img.image)
-            for img in obj.littleImages.all()
-        ]
+        request = self.context.get("request")
+        urls = []
+        for img in obj.littleImages.all():
+            if img.image:
+                url = img.image.url
+                if request:
+                    url = request.build_absolute_uri(url)
+                urls.append(url)
+        return urls
+
 
 
 # ✅ Second Section
