@@ -35,10 +35,11 @@ class SecondSectionSmallCardSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'titleSpan', 'image', 'littleImages']
 
     def get_littleImages(self, obj):
-        # Если у карточки есть ForeignKey на LittleImages, возвращаем список URL
-        if obj.littleImages:
-            return [AbsoluteImageUrlField(context=self.context).to_representation(obj.littleImages.image)]
-        return []
+        return [
+            AbsoluteImageUrlField(context=self.context).to_representation(img.image)
+            for img in obj.littleImages.all()
+        ]
+
 
 # ✅ Second Section
 class SecondSectionSerializer(serializers.ModelSerializer):

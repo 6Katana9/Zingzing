@@ -24,7 +24,7 @@ class SecondSectionSmallCard(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     titleSpan = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to="products/")
-    littleImages = models.ForeignKey(LittleImages, on_delete=models.SET_NULL, null=True, blank=True)
+    littleImages = models.ManyToManyField(LittleImages, blank=True, related_name="small_cards")
 
     def __str__(self):
         return self.title
