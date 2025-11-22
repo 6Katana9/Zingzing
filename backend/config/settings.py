@@ -77,7 +77,8 @@ INSTALLED_APPS = [
     'news',
     'products',
     'quality',
-    'reachUs'
+    'reachUs',
+    'partnership'
 ]
 
 MIDDLEWARE = [
@@ -165,6 +166,7 @@ LANGUAGES = [
     ('en', _('English')),
     ('uz', _('Oʻzbekcha')),
     ('kk', _('Қазақша')),
+    ('tr', _('Türkçe'))
 ]
 
 
@@ -197,10 +199,10 @@ CORS_ALLOWED_ORIGINS = [
     'https://zingzing.ru',
     
     'https://www.zingzing.kz',
-    'https://zingzing.kz'
+    'https://zingzing.kz',
 
     'https://www.zingzing.kg',
-    'https://zingzing.kg'
+    'https://zingzing.kg',
 
     'https://www.zingzing.uz',
     'https://zingzing.uz'  
@@ -215,10 +217,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://zingzing.ru',
 
     'https://www.zingzing.kz',
-    'https://zingzing.kz'
+    'https://zingzing.kz',
 
     'https://www.zingzing.kg',
-    'https://zingzing.kg'
+    'https://zingzing.kg',
 
     'https://www.zingzing.uz',
     'https://zingzing.uz' 

@@ -514,12 +514,6 @@
 		.title {
 			font-size: 20px;
 		}
-		.imgWrapper {
-			width: 100px;
-			height: 150px;
-			bottom: 20px;
-			right: 50px;
-		}
 
 		.pink {
 			width: 100%;
@@ -528,6 +522,13 @@
 				content: '';
 				position: absolute;
 				bottom: -14px;
+			}
+
+			.imgWrapper {
+				width: 105px;
+				height: 170px;
+				bottom: 20px;
+				right: 50px;
 			}
 		}
 	}
@@ -590,8 +591,11 @@
 	}
 
 	.products {
+		.list {
+			gap: 5px;
+		}
 		.card {
-			height: 188px;
+			height: 222px;
 		}
 
 		.yellow {
@@ -660,7 +664,7 @@
 			position: absolute;
 			inset: 0;
 			background: var(--pink);
-			clip-path: polygon(0% 0%, 100% 26%, 100% 69%, 0% 91%);
+			clip-path: polygon(0% 0%, 100% 22%, 100% 75%, 0% 100%);
 			z-index: 0;
 			pointer-events: none;
 		}
@@ -683,6 +687,9 @@
 
 @media (max-width: 768px) {
 	.secondHero {
+		.title {
+			max-width: 410px;
+		}
 		.wrapper {
 			padding: 40px;
 			align-items: flex-start;
@@ -690,7 +697,7 @@
 		}
 		.imagesWrapper {
 			flex-direction: column;
-			margin-left: 0;
+			margin-left: -65px;
 		}
 
 		.leftImg {
@@ -833,6 +840,9 @@
 
 @media (max-width: 600px) {
 	.secondHero {
+		.imagesWrapper {
+			margin-left: -115px;
+		}
 		.rightImg {
 			right: 280px;
 			width: min(280px, 30vw);
@@ -871,11 +881,14 @@
 			padding: 20px;
 		}
 		.leftImg {
-			height: 250px;
-			bottom: -71px;
+			height: 222px;
+			bottom: -99px;
 		}
 		.rightImg {
 			right: 220px;
+		}
+		.imagesWrapper {
+			margin-left: -150px;
 		}
 	}
 
