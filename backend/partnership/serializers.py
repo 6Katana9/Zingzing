@@ -5,5 +5,5 @@ from .models import PartnershipRequest
 class PartnershipRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = PartnershipRequest
-        fields = ['id', 'email', 'phone_number', 'message', 'created_at']
+        fields = ['id', 'email', 'phone', 'message', 'created_at']
         read_only_fields = ['id', 'created_at']

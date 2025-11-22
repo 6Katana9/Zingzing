@@ -3,7 +3,7 @@ from django.db import models
 
 class PartnershipRequest(models.Model):
     email = models.EmailField("Email компании или ваш")
-    phone_number = models.CharField("Номер телефона", max_length=30)
+    phone = models.CharField("Номер телефона", max_length=30)
     message = models.TextField("Сообщение", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
