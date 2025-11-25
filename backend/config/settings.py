@@ -169,6 +169,9 @@ LANGUAGES = [
     ('tr', _('Türkçe'))
 ]
 
+MODELTRANSLATION_FALLBACK_LANGUAGES = {
+    'default': ()
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
