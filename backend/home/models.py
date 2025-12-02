@@ -13,7 +13,7 @@ class HeroSection(models.Model):
 
 
     def __str__(self):
-        return self.mainTitle
+        return self.mainTitle if self.mainTitle else '-'
 
 # First section
 class FirstSection(models.Model):
@@ -24,7 +24,7 @@ class FirstSection(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else '-'
 
 # Second section card
 class SecondSectionCard(models.Model):
@@ -34,7 +34,7 @@ class SecondSectionCard(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else '-'
 
 class SecondSection(models.Model):
     mainTitle = models.CharField(max_length=200, blank=True, null=True)
@@ -43,7 +43,7 @@ class SecondSection(models.Model):
 
 
     def __str__(self):
-        return self.mainTitle
+        return self.mainTitle if self.mainTitle else '-'
 
 # Third section card
 class ThirdSectionCard(models.Model):
@@ -52,7 +52,7 @@ class ThirdSectionCard(models.Model):
 
 
     def __str__(self):
-        return self.text
+        return self.text if self.text else '-'
 
 class ThirdSection(models.Model):
     cards = models.ManyToManyField(ThirdSectionCard, related_name="third_sections")
@@ -68,7 +68,7 @@ class FourthSectionGrowTogether(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else '-'
     
 
 class Review(models.Model):
